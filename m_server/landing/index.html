@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>LeoLauncher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        leo: {
+                            red: '#b11226',
+                            dark: '#0b0b0f',
+                            panel: '#121218'
+                        }
+                    },
+                    boxShadow: {
+                        glow: '0 0 30px rgba(177,18,38,0.45)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @keyframes auroraFloat {
+            0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.5; }
+            50% { transform: translate3d(20px, -10px, 0) scale(1.1); opacity: 0.7; }
+            100% { transform: translate3d(-15px, 15px, 0) scale(1); opacity: 0.5; }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .aurora {
+            position: absolute;
+            border-radius: 9999px;
+            filter: blur(45px);
+            background: radial-gradient(circle, rgba(177,18,38,0.65), transparent 60%);
+            animation: auroraFloat 12s ease-in-out infinite;
+        }
+
+        .aurora--right {
+            animation-duration: 14s;
+            animation-direction: alternate;
+            background: radial-gradient(circle, rgba(255,115,115,0.5), transparent 55%);
+        }
+
+        .gradient-title {
+            background-image: linear-gradient(120deg, #b11226, #ff8a5c, #ffe078);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: gradientShift 8s ease infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-leo-dark text-white font-sans">
+
+<!-- HERO -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+    <!-- Background glow -->
+    <div class="absolute inset-0 bg-gradient-to-b from-leo-red/20 via-[#0c0c12]/90 to-[#050507]"></div>
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="aurora w-72 h-72 -top-20 -left-8"></div>
+        <div class="aurora aurora--right w-96 h-96 bottom-0 right-0"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl text-center px-6">
+        <p class="uppercase tracking-[0.6em] text-xs md:text-sm text-leo-red/80 mb-5">LeoLauncher</p>
+        <h1 class="text-4xl md:text-7xl font-extrabold tracking-wide mb-6 leading-tight">
+            <span class="text-gray-100">Запусти</span>
+            <span class="gradient-title drop-shadow-[0_0_25px_rgba(177,18,38,0.7)]">Minecraft-вселенную</span>
+        </h1>
+
+        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+            Премиальный лаунчер для комфортной игры.
+            Быстрый запуск, модпаки, авто-обновления и стабильность без компромиссов.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#download"
+               class="px-8 py-4 bg-leo-red rounded-xl font-semibold
+                      shadow-glow hover:bg-red-700 transition transform hover:-translate-y-0.5">
+                Скачать лаунчер
+            </a>
+
+            <a href="#features"
+               class="px-8 py-4 border border-leo-red/40 rounded-xl
+                      text-leo-red hover:bg-leo-red/10 transition transform hover:-translate-y-0.5">
+                Подробнее
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="relative py-24 bg-gradient-to-b from-[#050507] via-[#040405] to-black overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none opacity-40">
+        <div class="aurora w-64 h-64 top-16 left-6"></div>
+        <div class="aurora aurora--right w-72 h-72 bottom-6 right-6"></div>
+    </div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+
+        <h2 class="text-4xl font-bold text-center mb-16">
+            Почему <span class="text-leo-red">наш лаунчер</span>
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <!-- Card -->
+            <div class="bg-leo-panel/70 backdrop-blur rounded-2xl p-8 border border-white/5 hover:border-leo-red/40 transition">
+                <h3 class="text-xl font-semibold mb-3">⚡ Мгновенный запуск</h3>
+                <p class="text-gray-400">
+                    Оптимизированная загрузка клиента и ассетов.
+                    Минимум ожидания — максимум игры.
+                </p>
+            </div>
+
+            <div class="bg-leo-panel/70 backdrop-blur rounded-2xl p-8 border border-white/5 hover:border-leo-red/40 transition">
+                <h3 class="text-xl font-semibold mb-3">🧩 Моды и сборки</h3>
+                <p class="text-gray-400">
+                    Forge / Fabric / OptiFine.
+                    Установка модпаков в один клик.
+                </p>
+            </div>
+
+            <div class="bg-leo-panel/70 backdrop-blur rounded-2xl p-8 border border-white/5 hover:border-leo-red/40 transition">
+                <h3 class="text-xl font-semibold mb-3">🛡 Безопасность</h3>
+                <p class="text-gray-400">
+                    Проверка файлов, защита аккаунтов
+                    и стабильные обновления.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="download" class="py-24 bg-gradient-to-t from-leo-red/20 to-black">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+
+        <h2 class="text-4xl font-bold mb-6">
+            Готов начать?
+        </h2>
+
+        <p class="text-gray-300 mb-10">
+            Скачай LeoLauncher и погрузись в игру
+            с максимальным комфортом.
+        </p>
+
+        <a href="#"
+           class="inline-block px-10 py-5 bg-leo-red rounded-2xl text-lg font-semibold
+                  shadow-glow hover:bg-red-700 transition transform hover:-translate-y-0.5">
+            Скачать для Windows
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black py-10 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-500 text-sm">
+            © 2025 LeoLauncher. Все права защищены.
+        </p>
+
+        <div class="flex gap-6 text-gray-400">
+            <a href="https://discord.gg/jNKZdGYc" class="hover:text-leo-red transition" target="_blank" rel="noreferrer">Discord</a>
+            <a href="https://t.me/lkwebdev" class="hover:text-leo-red transition" target="_blank" rel="noreferrer">Telegram</a>
+            <a href="https://t.me/lkwebdev" class="hover:text-leo-red transition" target="_blank" rel="noreferrer">Support</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
